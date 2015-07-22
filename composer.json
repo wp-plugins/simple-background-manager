@@ -6,6 +6,6 @@
       }
     ],
     "require": {
-        "vuzzu/utilizer-ui-elements": "~0.2"
+        "vuzzu/utilizer-ui-elements": "~0.3"
     }
 }

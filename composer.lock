@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "vuzzu/utilizer-ui-elements",
-            "version": "v0.2",
+            "version": "0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vuzzu/utilizer-ui-elements.git",
-                "reference": "b868596bb372f009c4cbf01d677bd50e188985df"
+                "reference": "920650302c30b1fb08a92bddbcfef37cfa229d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vuzzu/utilizer-ui-elements/zipball/b868596bb372f009c4cbf01d677bd50e188985df",
-                "reference": "b868596bb372f009c4cbf01d677bd50e188985df",
+                "url": "https://api.github.com/repos/vuzzu/utilizer-ui-elements/zipball/920650302c30b1fb08a92bddbcfef37cfa229d9e",
+                "reference": "920650302c30b1fb08a92bddbcfef37cfa229d9e",
                 "shasum": ""
             },
             "type": "library",
@@ -32,10 +32,10 @@
             ],
             "description": "Library for WordPress admin user interface elements, for a world with smart inputs",
             "support": {
-                "source": "https://github.com/vuzzu/utilizer-ui-elements/tree/v0.2",
+                "source": "https://github.com/vuzzu/utilizer-ui-elements/tree/0.3",
                 "issues": "https://github.com/vuzzu/utilizer-ui-elements/issues"
             },
-            "time": "2015-04-08 23:28:24"
+            "time": "2015-07-22 10:10:33"
         }
     ],
     "packages-dev": [],

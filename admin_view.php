@@ -61,6 +61,7 @@ function vuzzu_sbm_metabox_view() {
     $actual_bg_color 		= (isset($background_manager_options['color'])) 	 ? $background_manager_options['color'] : null;
     $actual_bg_img 			= (isset($background_manager_options['img'])) 		 ? $background_manager_options['img'] : null;
     $actual_bg_img_repeat	= (isset($background_manager_options['img_repeat'])) ? $background_manager_options['img_repeat'] : null;
+    $actual_bg_img_fixed	= (isset($background_manager_options['img_fixed'])) ? $background_manager_options['img_fixed'] : null;
 
     // If is set actual_bg_img and is_numeric turn it to url and get image sizes
     if( $actual_bg_img && @GetImageSize( $actual_bg_img ) ) {
@@ -121,6 +122,8 @@ function vuzzu_sbm_metabox_view() {
 
     <?php $repeatStates = array(''=>__('None','sbm_terms'), 'repeat'=>__('Repeat','sbm_terms'), 'repeat-x'=>__('Repeat horizontally','sbm_terms'), 'repeat-y'=>__('Repeat vertically','sbm_terms'));
     uz_select_input(__('Background image repeat','sbm_terms'),'sbm_bg_img_repeat',$actual_bg_img_repeat,$repeatStates,true); ?>
+
+    <?php uz_checkbox_input(__('Background image fixed','sbm_terms'),'sbm_bg_img_fixed',$actual_bg_img_fixed); ?>
 
   </div>
   <!-- BACKGROUND MANAGER END -->

@@ -18,6 +18,7 @@ function vuzzu_sbm_load_background_manager_style() {
 	$bg_color = (isset($background_manager_options['color'])) ? $background_manager_options['color'] : null;
 	$bg_img = (isset($background_manager_options['img'])) ? $background_manager_options['img'] : null;
 	$bg_img_repeat  = (isset($background_manager_options['img_repeat'])) ? $background_manager_options['img_repeat'] : null;
+	$bg_img_fixed	= (isset($background_manager_options['img_fixed'])) ? $background_manager_options['img_fixed'] : null;
 
 	?>
 
@@ -27,6 +28,7 @@ function vuzzu_sbm_load_background_manager_style() {
 			<?php if($bg_color) echo "background-color: {$bg_color} !important;"; ?>
 			<?php if($bg_img) echo "background-image: url({$bg_img}) !important;"; ?>
 			<?php echo ($bg_img_repeat) ? "background-repeat: {$bg_img_repeat} !important;" : "background-repeat:no-repeat;"; ?>
+			<?php if($bg_img_fixed) echo "background-attachment: fixed !important;"; ?>
 		}
 
 		</style>

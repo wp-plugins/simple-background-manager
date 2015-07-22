@@ -127,18 +127,38 @@ utilizerUIElements.helper = {
 
       });
 
-    }
+    },
+
+    inputValidation: function(event) {
+
+      var self = $u(this);
+
+      if ( self.hasClass('warn_border') ) self.removeClass('warn_border').prev().removeClass('warn_text');
+
+      switch (self.attr('class')) {
+
+        case 'number':
+
+          if( [8,9,13,46,48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105].indexOf(event.keyCode) < 0 ) {
+            event.preventDefault();
+            self.addClass('warn_border').prev().addClass('warn_text');
+          }
+
+        break;
+
+      }
+    },
 
 };
 
 utilizerUIElements.invoke = {
 
-  showImages: function(loadCallback) {
+  showImages: function() {
     $ui(".uz_input").find('div.image_show').each(function(i, imageShow) {
       imageShow = $ui(imageShow);
 
       imageShow.find('img').load(function(){
-        typeof loadCallback === 'function' && loadCallback();
+        imageShow.trigger("image-loaded");
       });
     });
   },
@@ -166,8 +186,8 @@ utilizerUIElements.invoke = {
 				case 0:
 					checkbox.find('input[type=checkbox]').val(0);
 
-					if( checkbox.hasClass('uz_collapser') ) {
-						checkbox.parent().nextAll('.uz_collapse').toggleClass('uz_hidden');
+					if( checkbox.parents('.uz_collapser').length ) {
+						checkbox.parents('.uz_collapser').nextAll('.uz_collapse').toggleClass('uz_hidden');
 					}
 
 				break;
@@ -247,15 +267,15 @@ utilizerUIElements.invoke = {
           self.prev().val(ui.value);
           self.children('span.value').html(ui.value);
 
-          if( self.hasClass('video_width') ) {
-            var videoHeight = self.siblings('.video_height');
+          if( self.parents('.video_width').length ) {
+            var videoHeight = self.parents('.video_width').siblings('.video_height').find(".uz_slider");
             var newValue = Math.round(ui.value/1.5);
             videoHeight.slider('value', newValue).prev().val(newValue);
             videoHeight.children('span.value').html(newValue);
           }
 
-          if( self.hasClass('video_height') ) {
-            var videoWidth = self.siblings('.video_width');
+          if( self.parents('.video_height').length ) {
+            var videoWidth = self.parents('.video_height').siblings('.video_width').find(".uz_slider");
             var newValue = Math.round(ui.value*1.5);
             videoWidth.slider('value', newValue).prev().val(newValue);
             videoWidth.children('span.value').html(newValue);
@@ -320,14 +340,14 @@ utilizerUIElements.invoke = {
 
 utilizerUIElements.handler = {
 
-  	clickCheckbox: function(switchCallback) {
+  	clickCheckbox: function() {
   		var self = $ui(this);
   		var inner = self.children('.inner');
 
-  		if( self.hasClass('uz_collapser') ) {
-  			self.parent().nextAll('.uz_collapse').toggleClass('uz_hidden');
-        typeof switchCallback === 'function' && switchCallback();
-  		}
+      if( self.parents('.uz_collapser').length ) {
+        self.parents('.uz_collapser').nextAll('.uz_collapse').toggleClass('uz_hidden');
+        self.trigger('switched');
+      }
 
   		inner.next().val(inner.position().left === 0 ? 1 : 0);
   		inner.animate({
@@ -336,14 +356,14 @@ utilizerUIElements.handler = {
   		self.find('input[type=checkbox]').trigger('change');
   	},
 
-  	focusColorPicker: function(focusCallback) {
+  	focusColorPicker: function() {
   		$ui(this).iris('show');
-      typeof focusCallback === 'function' && focusCallback();
+  		$ui(this).trigger("focused");
   	},
 
-  	clickColorPickerOk: function(okCallback) {
+  	clickColorPickerOk: function() {
   		$ui(this).next().iris('hide');
-      typeof okCallback === 'function' && okCallback();
+  		$ui(this).trigger("color-picked");
   	},
 
   	clickFAIcon: function() {
@@ -368,7 +388,7 @@ utilizerUIElements.handler = {
       utilizerUIElements.helper.slideWithArrows($ui(this), 114);
   	},
 
-  	clickBrowseButton: function(selectImageCallback) {
+  	clickBrowseButton: function() {
 
   		var self = $ui(this);
   		var imageShow = self.prevAll("div.image_show");
@@ -394,7 +414,7 @@ utilizerUIElements.handler = {
   			if ( imageShow.length !== 0 ) {
   				imageShow.html('<img src="'+image.url+'" />');
   				imageShow.find('img').load(function(){
-            typeof selectImageCallback === 'function' && selectImageCallback();
+            self.trigger("image-loaded");
   				});
   			}
 
@@ -405,14 +425,14 @@ utilizerUIElements.handler = {
   		file_frame.open();
   	},
 
-  	keyupOnBrowseButtonSource: function(onEditFileInputCallback) {
+  	keyupOnBrowseButtonSource: function() {
   		var self = $ui(this);
   		self.prevAll('div.image_show').fadeOut(
   			function() {
           typeof selectImageCallback === 'function' && selectImageCallback();
           typeof onEditFileInputCallback === 'function' && onEditFileInputCallback();
   				self.prevAll('div.image_show').html('<img src="' + self.val() + '" />').fadeIn(function() {
-            typeof onEditFileInputCallback === 'function' && onEditFileInputCallback();
+            self.trigger("image-loaded");
           });
   			}
   		);
@@ -443,19 +463,21 @@ utilizerUIElements.handler = {
   		}
   	},
 
-  	addAjaxListInput: function(onChangeCallback) {
-  		var ajaxList = $ui(this).parent().parent();
+  	addAjaxListInput: function() {
+  		var ajaxList = $ui(this).parents('.ajaxlist');
 
   		ajaxList.children(':first').clone().appendTo(ajaxList);
       ajaxList.find('li:last-child input').val('').prop("disabled",false).removeClass('uz_skip').parent().removeClass('uz_hidden');
-      typeof onChangeCallback === 'function' && onChangeCallback();
+      ajaxList.trigger("updated");
 
   	},
 
-  	deleteAjaxListInput: function(onDeleteCallback) {
-  		$ui(this).parent().fadeOut('normal', function() {
+  	deleteAjaxListInput: function() {
+      var ajaxList = $ui(this).parents('.ajaxlist');
+
+      $ui(this).parent().fadeOut('normal', function() {
   			$ui(this).remove();
-        typeof onDeleteCallback === 'function' && onDeleteCallback();
+        ajaxList.trigger("updated");
   		});
   	},
 
@@ -476,7 +498,11 @@ utilizerUIElements.invokeBundle = function() {
 
 utilizerUIElements.attachHandlers = function() {
 
+  $ui(".uz_input a").disableSelection();
+
   $ui(".uz_input").on('click', 'a', function(event) { event.preventDefault(); });
+
+  $ui(".uz_input").on('keyup', 'input.number',                  utilizerUIElements.helper.inputValidation);
 
   $ui(".uz_input").on('click', 'a.checkbox',                    utilizerUIElements.handler.clickCheckbox);
   $ui(".uz_input").on('focus', '.iris-color-picker',            utilizerUIElements.handler.focusColorPicker);

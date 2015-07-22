@@ -4,7 +4,7 @@
 
 Plugin Name: Simple Background Manager
 Description: An easy solution to background management
-Version: 1.0
+Version: 1.1
 Author: vuzzu
 Author URI: http://vuzzu.net/
 Plugin URI: https://github.com/vuzzu/simple-background-manager
@@ -106,6 +106,12 @@ class Vuzzu_Simple_Background_Manager {
 		if( isset($_POST['sbm_bg_img_repeat']) && $_POST['sbm_bg_img_repeat'] !== 'none' )
 		{
 			$background_manager_options['img_repeat'] = $_POST['sbm_bg_img_repeat'];
+		}
+
+		# Set background image fixed
+		if( isset($_POST['sbm_bg_img_fixed']) && $_POST['sbm_bg_img_fixed'] !== '' )
+		{
+			$background_manager_options['img_fixed'] = $_POST['sbm_bg_img_fixed'];
 		}
 
 		# Finally update changes

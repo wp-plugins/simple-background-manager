@@ -11,12 +11,12 @@ Simple Background Manager helps you to manage the background of pages/posts with
 
 == Description ==
 
-By installing and activating Simple Background Manager, the plugin will add 1 page on Wordpress admin and a metabox to post/page form.
+The plugin will add 1 page on Wordpress admin and a metabox to post/page form.
 The settings page located below Settings menu of Wordpress with label "Simple Background Manager", this page helps you manage the support of post types of plugin.
+The metabox is located on side panel below the post/page attributes, just pick the color or upload the image. 
+Then save changes and see the difference in action by previewing the post/page.
 
 No work/coding is required by user end.
-
-Just pick the color or upload the image and update changes then see the change in action by previewing the post/page.
 
 == Installation ==
 

@@ -2,7 +2,7 @@
 Library for WordPress admin, library of user interface elements, for a world with smart inputs.
 
 To use the library on your next plugin, just load the init.php from functions.php or main plugin file.php
-ex.: 
+ex.:
 
   require_once( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'utilizer-ui-elements/init.php' );
 

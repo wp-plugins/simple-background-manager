@@ -10,6 +10,7 @@ if( !defined( "UTILIZER_UI_ELEMENTS_DIR" ) ) :
 	// Constants
 	define( 'UTILIZER_UI_ELEMENTS_DIR',	dirname(__FILE__) );
 	define( 'UTILIZER_UI_ELEMENTS_URI',	trailingslashit( plugin_dir_url( __FILE__ ) ) );
+	//define( 'UTILIZER_UI_ELEMENTS_URI',	trailingslashit( get_template_directory_uri() ) );
 
 	// Loading all elements
 	$elements_path_list = glob( UTILIZER_UI_ELEMENTS_DIR . "/elements/*.php");
@@ -65,8 +66,8 @@ if( !defined( "UTILIZER_UI_ELEMENTS_DIR" ) ) :
 		# Cascading Style Sheets
 
 			// Registering css assets
-			wp_register_style( 'font-awesome', "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", false, "4.3.0", "all" );
 			wp_register_style( 'google-roboto-font', "http://fonts.googleapis.com/css?family=Roboto:400,700,500", false, "1.0", "all" );
+			wp_register_style( 'font-awesome', UTILIZER_UI_ELEMENTS_URI . 'assets/css/font-awesome.min.css', false, "4.3.0", "all");
 			wp_register_style( 'jquery-ui-mod', UTILIZER_UI_ELEMENTS_URI . 'assets/css/jquery-ui.mod.css', false, "1.10.0", "all");
 			wp_register_style( 'utilizer-ui-elements', UTILIZER_UI_ELEMENTS_URI . 'assets/css/style.css', false, "1.0", "all");
 

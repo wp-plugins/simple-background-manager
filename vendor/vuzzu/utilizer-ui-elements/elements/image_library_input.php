@@ -50,7 +50,7 @@ function uz_ui_load_more_images() {
 	$images = $wpdb->get_results(" SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image%' ORDER BY post_date DESC LIMIT {$offset},25 ");
 
 	foreach($images as $key => $image) {
-		$images[$key]->url = wp_get_attachment_url( $image->ID );
+		$images[$key]->url = wp_get_attachment_thumb_url( $image->ID );
 	}
 
 
