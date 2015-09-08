@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Simple Sidebar Manager 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-11 12:36+0100\n"
-"PO-Revision-Date: 2015-06-11 12:37+0100\n"
+"POT-Creation-Date: 2015-09-08 19:03+0200\n"
+"PO-Revision-Date: 2015-09-08 19:03+0200\n"
 "Last-Translator: Vuzzu <info@vuzzu.net>\n"
 "Language-Team: Vuzzu <info@vuzzu.net>\n"
 "Language: en\n"
@@ -11,77 +11,94 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../admin_view.php:25
-msgid "Supporting post types"
+#: ../admin_view.php:27
+msgid "Simple Background Manager settings"
 msgstr ""
 
-#: ../admin_view.php:27
+#: ../admin_view.php:29
 msgid "Below you can extend support for more post types:"
 msgstr ""
 
-# @ vz_front_terms
-#: ../admin_view.php:58 ../admin_view.php:83 ../admin_view.php:87
-#: ../admin_view.php:191
-msgid "None"
+#: ../admin_view.php:42
+msgid "Automatically inherit parent post/page SBM settings:"
 msgstr ""
 
-#: ../admin_view.php:75 ../simple-sidebar-manager.php:101
-msgid "Manage sidebars"
-msgstr ""
-
-#: ../admin_view.php:82
-msgid "Set a default sidebar position"
-msgstr ""
-
-#: ../admin_view.php:83 ../admin_view.php:189
-msgid "Left"
-msgstr ""
-
-#: ../admin_view.php:83 ../admin_view.php:190
-msgid "Right"
-msgstr ""
-
-#: ../admin_view.php:84
-msgid "Default sidebar position"
-msgstr ""
-
-#: ../admin_view.php:86
-msgid "Set a default sidebar"
-msgstr ""
-
-#: ../admin_view.php:87
-msgid "Default sidebar"
+#: ../admin_view.php:46
+msgid "Automatically use featured image as background image:"
 msgstr ""
 
 #: ../admin_view.php:89
-msgid "Add/Modify/Remove dynamic sidebars"
+#: ../vendor/vuzzu/utilizer-ui-elements/elements/file_input.php:17
+msgid "Width:"
 msgstr ""
 
 #: ../admin_view.php:90
-msgid "Current dynamic sidebars"
+#: ../vendor/vuzzu/utilizer-ui-elements/elements/file_input.php:18
+msgid "Height:"
+msgstr ""
+
+#: ../admin_view.php:142
+msgid "Note: Inherit parent settings is on."
+msgstr ""
+
+#: ../admin_view.php:144
+msgid "Background color: <i class=\"fa fa-ellipsis-h toggle-hidden-input\"></i>"
+msgstr ""
+
+#: ../admin_view.php:147
+msgid "Background color opacity:"
+msgstr ""
+
+#: ../admin_view.php:152
+msgid "Currently using featured image as background image,"
+msgstr ""
+
+#: ../admin_view.php:152
+msgid "click here to change."
+msgstr ""
+
+#: ../admin_view.php:155
+msgid "Background image url:"
+msgstr ""
+
+# @ vz_front_terms
+#: ../admin_view.php:160
+msgid "None"
 msgstr ""
 
 #: ../admin_view.php:160
-msgid "Choose the side and the sidebar"
+msgid "Repeat"
 msgstr ""
 
-#: ../simple-sidebar-manager.php:102
-msgid "Sidebars"
+#: ../admin_view.php:160
+msgid "Repeat horizontally"
 msgstr ""
 
-#: ../simple-sidebar-manager.php:112
-msgid "Simple Sidebar Manager Settings"
+#: ../admin_view.php:160
+msgid "Repeat vertically"
 msgstr ""
 
-#: ../simple-sidebar-manager.php:113 ../simple-sidebar-manager.php:128
-msgid "Simple Sidebar Manager"
+#: ../admin_view.php:161
+msgid "Background image repeat"
+msgstr ""
+
+#: ../admin_view.php:163
+msgid "Background image fixed"
+msgstr ""
+
+#: ../simple-background-manager.php:62
+msgid "Simple Background Manager Settings"
+msgstr ""
+
+#: ../simple-background-manager.php:63 ../simple-background-manager.php:78
+msgid "Simple Background Manager"
 msgstr ""
 
 #: ../vendor/vuzzu/utilizer-ui-elements/elements/ajax_list_input.php:42
@@ -90,14 +107,6 @@ msgstr ""
 
 #: ../vendor/vuzzu/utilizer-ui-elements/elements/color_picker_input.php:20
 msgid "Ok"
-msgstr ""
-
-#: ../vendor/vuzzu/utilizer-ui-elements/elements/file_input.php:17
-msgid "Width:"
-msgstr ""
-
-#: ../vendor/vuzzu/utilizer-ui-elements/elements/file_input.php:18
-msgid "Height:"
 msgstr ""
 
 #: ../vendor/vuzzu/utilizer-ui-elements/elements/file_input.php:37

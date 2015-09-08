@@ -4,7 +4,7 @@
 
 Plugin Name: Simple Background Manager
 Description: An easy solution to background management
-Version: 1.1
+Version: 1.2
 Author: vuzzu
 Author URI: http://vuzzu.net/
 Plugin URI: https://github.com/vuzzu/simple-background-manager
@@ -31,9 +31,9 @@ class Vuzzu_Simple_Background_Manager {
 			add_action( 'save_post', array( $this, 'admin_save_filter' ) );
 
     } else {
-
 			require_once trailingslashit( plugin_dir_path( __FILE__ ) ) . "front_init.php";
 			add_action('wp_head', 'vuzzu_sbm_load_background_manager_style');
+			add_action('wp_print_scripts', 'vuzzu_sbm_load_background_manager_script');
 		}
 
 	}
@@ -51,6 +51,8 @@ class Vuzzu_Simple_Background_Manager {
 
 	public function admin_register_settings() {
     register_setting( 'sbm-settings-group', 'simple_background_manager_support_types' );
+    register_setting( 'sbm-settings-group', 'simple_background_manager_fi_as_bi' );
+    register_setting( 'sbm-settings-group', 'simple_background_manager_inherit_parent_settings' );
   }
 
 
@@ -91,25 +93,31 @@ class Vuzzu_Simple_Background_Manager {
 		}
 
 		# Set background color
-		if( isset($_POST['sbm_bg_color']) )
+		if( isset($_POST['sbm_bg_color']) && strlen($_POST['sbm_bg_color'])>0 )
 		{
 			$background_manager_options['color'] = $_POST['sbm_bg_color'];
 		}
 
+		# Set background color opacity
+		if( isset($_POST['sbm_bg_color_opacity']) && $_POST['sbm_bg_color_opacity']>0 )
+		{
+			$background_manager_options['color_opacity'] = $_POST['sbm_bg_color_opacity'];
+		}
+
 		# Set background image
-		if( isset($_POST['sbm_bg_img']) )
+		if( isset($_POST['sbm_bg_img']) && strlen($_POST['sbm_bg_img'])>0 )
 		{
 			$background_manager_options['img'] = $_POST['sbm_bg_img'];
 		}
 
 		# Set background image repeatness
-		if( isset($_POST['sbm_bg_img_repeat']) && $_POST['sbm_bg_img_repeat'] !== 'none' )
+		if( isset($_POST['sbm_bg_img_repeat']) && $_POST['sbm_bg_img_repeat'] !== 'none' && strlen($_POST['sbm_bg_img_repeat'])>0 )
 		{
 			$background_manager_options['img_repeat'] = $_POST['sbm_bg_img_repeat'];
 		}
 
 		# Set background image fixed
-		if( isset($_POST['sbm_bg_img_fixed']) && $_POST['sbm_bg_img_fixed'] !== '' )
+		if( isset($_POST['sbm_bg_img_fixed']) && strlen($_POST['sbm_bg_img_fixed'])>0 )
 		{
 			$background_manager_options['img_fixed'] = $_POST['sbm_bg_img_fixed'];
 		}
