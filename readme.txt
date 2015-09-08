@@ -30,7 +30,7 @@ Simple Background Manager helps you to manage the background of pages/posts with
 
 == Changelog ==
 = 1.3 =
-* Added feature to inherit parent SBM settings
+* Added feature to inherit parent post/page SBM settings
 * Added feature to enable using featured image as background image
 * Added color opacity management (can overlay images if any image is set)
 
